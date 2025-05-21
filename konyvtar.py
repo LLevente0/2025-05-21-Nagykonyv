@@ -13,9 +13,18 @@ class Konyvtar:
                 adatok = sor.strip().split(";")
                 nev = adatok[0]
                 szul_ev = adatok[1]
-                hal_ev = adatok[2]
+                hal_ev = adatok[2] if adatok[2] else "2005"
                 nemzetiseg = adatok[3]
                 cim = adatok[4]
                 helyezes = adatok[5]
 
-                konyvek.append(konyv(nev, szul_ev, hal_ev, nemzetiseg, cim, helyezes))
+                self.konyvek.append(konyv(nev, szul_ev, hal_ev, nemzetiseg, cim, helyezes))
+
+    def konyvek_db(self):
+        print(len(self.konyvek))
+
+konyvtar = Konyvtar()
+konyvtar.konyvek_db()
+
+for i in konyvtar.konyvek:
+    print(i.nev, "-", i.cim)
